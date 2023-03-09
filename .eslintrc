@@ -111,38 +111,10 @@
     "computed-property-spacing": "error",
     "eol-last": 0,
     "func-call-spacing": "error",
-    "indent": [
-      "error",
-      2,
-      {
-        "CallExpression": {
-          "arguments": 1
-        },
-        "FunctionDeclaration": {
-          "body": 1,
-          "parameters": 2
-        },
-        "FunctionExpression": {
-          "body": 1,
-          "parameters": 2
-        },
-        "MemberExpression": 1,
-        "ObjectExpression": 1,
-        "SwitchCase": 1,
-        "ignoredNodes": ["ConditionalExpression"]
-      }
-    ],
+    "indent": "off",
     "key-spacing": "error",
     "keyword-spacing": "error",
-    "max-len": [
-      "error",
-      {
-        "code": 90,
-        "tabWidth": 2,
-        "ignoreUrls": true,
-        "ignorePattern": "goog.(module|require)"
-      }
-    ],
+    "max-len": "off",
     "new-cap": "error",
     "no-array-constructor": "error",
     "no-mixed-spaces-and-tabs": "error",
