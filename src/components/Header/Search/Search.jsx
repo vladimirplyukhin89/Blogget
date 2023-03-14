@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './Search.module.css'
 
-export const Search = (props) => {
+export const Search = () => {
   return (
     <form className={s.form}>
       <input className={s.search} type="search" />

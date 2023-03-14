@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import s from './Auth.module.css'
 
 export const Auth = ({ auth }) => {
@@ -25,4 +27,8 @@ export const Auth = ({ auth }) => {
       )}
     </button>
   )
+}
+
+Auth.propTypes = {
+  auth: PropTypes.bool,
 }

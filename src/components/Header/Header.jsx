@@ -5,7 +5,7 @@ import Search from './Search'
 import Auth from './Auth'
 import Heading from './Heading'
 
-export const Header = (props) => {
+export const Header = () => {
   return (
     <header className={s.header}>
       <Layout>
