@@ -121,7 +121,7 @@
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
     "no-new-object": "error",
     "no-tabs": "error",
-    "no-trailing-spaces": "error",
+    "no-trailing-spaces": ["error", { "ignoreComments": true, "skipBlankLines": true }],
     "object-curly-spacing": "off",
     "one-var": [
       "error",
@@ -151,7 +151,7 @@
         "named": "never"
       }
     ],
-    "spaced-comment": ["error", "always"],
+    "spaced-comment": ["never"],
     "switch-colon-spacing": "error",
     "constructor-super": "error",
     "generator-star-spacing": ["error", "after"],
