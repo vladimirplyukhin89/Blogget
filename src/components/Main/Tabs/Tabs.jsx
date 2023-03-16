@@ -19,6 +19,7 @@ const LIST = [
 export const Tabs = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdown, setIsDropdown] = useState(true);
+  const [title, setTitle] = useState('Главная');
 
   const handleResize = () => {
     if (document.documentElement.clientWidth < 768) {
@@ -43,7 +44,7 @@ export const Tabs = () => {
       {isDropdown && (
         <div className={s.wrapperBtn}>
           <button className={s.btn} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-            add
+            {title}
             <ArrowIcon />
           </button>
         </div>
@@ -54,7 +55,7 @@ export const Tabs = () => {
           {LIST.map(({ title, id, Icon }) => {
             return (
               <li className={s.item} key={id}>
-                <button className={s.btn}>
+                <button className={s.btn} onClick={() => setTitle(title)}>
                   {title}
                   {Icon && <Icon width={40} />}
                 </button>

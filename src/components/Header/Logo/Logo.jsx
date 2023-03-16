@@ -1,11 +1,12 @@
-import React from 'react'
-import s from './Logo.module.css'
-import logo from './img/logo.svg'
+import React from 'react';
+
+import { ReactComponent as LogoIcon } from './img/logo.svg';
+import s from './Logo.module.css';
 
 export const Logo = () => {
   return (
     <a className={s.link} href="/">
-      <img className={s.logo} src={logo} alt="Blogget's logo" />
+      <LogoIcon className={s.logo} />
     </a>
-  )
-}
+  );
+};
