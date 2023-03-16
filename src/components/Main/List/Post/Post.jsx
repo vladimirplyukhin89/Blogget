@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 import { PostContent } from './PostContent/PostContent';
-import { PostButton } from './PostButton/PostButton';
+import { PostDeleteButton } from './PostDeleteButton/PostDeleteButton';
 import { PostRating } from './PostRating/PostRating';
 import { PostTime } from './PostTime/PostTime';
 import s from './Post.module.css';
@@ -14,7 +14,7 @@ export const Post = ({ postData }) => {
       <img className={s.img} src={notphoto} alt={title} />
 
       <PostContent author={author} title={title} />
-      <PostButton />
+      <PostDeleteButton />
       <PostRating ups={ups} />
       <PostTime date={date} />
     </li>
@@ -22,5 +22,5 @@ export const Post = ({ postData }) => {
 };
 
 Post.propsTypes = {
-  postData: PropTypes.object,
+  postsData: PropTypes.object,
 };

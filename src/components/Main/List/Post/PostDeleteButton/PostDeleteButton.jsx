@@ -1,6 +1,6 @@
-import s from './PostButton.module.css';
+import s from './PostDeleteButton.module.css';
 
-export const PostButton = () => {
+export const PostDeleteButton = () => {
   return (
     <button className={s.delete}>
       <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
