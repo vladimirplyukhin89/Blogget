@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import { IconSVG } from '../../../UI/IconSVG';
 import s from './Tabs.module.css';
 import { assignId, debounceRaf } from '../../../utils';
 import { ReactComponent as ArrowIcon } from './img/arrow.svg';
 import { ReactComponent as HomeIcon } from './img/home.svg';
-import { ReactComponent as PostIcon } from './img/post.svg';
-import { ReactComponent as SaveIcon } from './img/save.svg';
-import { ReactComponent as EyeIcon } from './img/eye.svg';
+import { ReactComponent as BestIcon } from './img/best.svg';
+import { ReactComponent as HotIcon } from './img/hot.svg';
+import { ReactComponent as TopIcon } from './img/top.svg';
 
 const LIST = [
   { title: 'Главная', Icon: HomeIcon },
-  { title: 'Просмотренные', Icon: EyeIcon },
-  { title: 'Сохранённые', Icon: SaveIcon },
-  { title: 'Мои посты', Icon: PostIcon },
+  { title: 'Топ', Icon: TopIcon },
+  { title: 'Лучшие', Icon: BestIcon },
+  { title: 'Горячие', Icon: HotIcon },
 ].map(assignId);
 
 export const Tabs = () => {
@@ -43,7 +44,10 @@ export const Tabs = () => {
     <div className={s.container}>
       {isDropdown && (
         <div className={s.wrapperBtn}>
-          <button className={s.btn} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+          <button
+            className={s.btn}
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
             {title}
             <ArrowIcon />
           </button>
@@ -57,7 +61,7 @@ export const Tabs = () => {
               <li className={s.item} key={id}>
                 <button className={s.btn} onClick={() => setTitle(title)}>
                   {title}
-                  {Icon && <Icon width={40} />}
+                  {Icon && <IconSVG Icon={Icon} width={40} />}
                 </button>
               </li>
             );
