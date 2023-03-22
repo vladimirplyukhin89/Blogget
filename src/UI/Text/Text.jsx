@@ -1,13 +1,13 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
 
-import s from './Text.module.css';
+import s from "./Text.module.css";
 
 export const Text = props => {
   const {
-    As = 'span',
-    color = 'black',
+    As = "span",
+    color = "black",
     size,
     tsize,
     dsize,
@@ -15,8 +15,9 @@ export const Text = props => {
     children,
     href,
     center,
-    fw,
+    fw
   } = props;
+
   const classes = classNames(
     className,
     s[color],
@@ -24,7 +25,7 @@ export const Text = props => {
     { [s[`fw${fw}`]]: fw },
     { [s[`fs${size}`]]: size },
     { [s[`fst${tsize}`]]: tsize },
-    { [s[`fsd${dsize}`]]: dsize },
+    { [s[`fsd${dsize}`]]: dsize }
   );
 
   return (
@@ -44,5 +45,5 @@ Text.propTypes = {
   children: PropTypes.node,
   href: PropTypes.string,
   center: PropTypes.bool,
-  fontWeight: PropTypes.number,
+  fontWeight: PropTypes.number
 };

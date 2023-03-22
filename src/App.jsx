@@ -1,11 +1,14 @@
-import Header from './components/Header'
-import Main from './components/Main'
+import Header from "./components/Header";
+import Main from "./components/Main";
+import { useToken } from "./hooks/useToken";
 
 export default function App() {
+  const [token] = useToken("");
+
   return (
     <>
-      <Header></Header>
+      <Header token={token}></Header>
       <Main></Main>
     </>
-  )
+  );
 }

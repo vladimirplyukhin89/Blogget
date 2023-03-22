@@ -121,7 +121,10 @@
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
     "no-new-object": "error",
     "no-tabs": "error",
-    "no-trailing-spaces": ["error", { "ignoreComments": true, "skipBlankLines": true }],
+    "no-trailing-spaces": [
+      "error",
+      { "ignoreComments": true, "skipBlankLines": true }
+    ],
     "object-curly-spacing": "off",
     "one-var": [
       "error",
@@ -136,7 +139,7 @@
     "quote-props": ["error", "consistent"],
     "quotes": [
       "error",
-      "single",
+      "double",
       {
         "allowTemplateLiterals": true
       }

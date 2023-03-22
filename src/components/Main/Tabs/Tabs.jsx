@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { IconSVG } from '../../../UI/IconSVG';
+import { IconSVG } from '../../../UI';
 import s from './Tabs.module.css';
 import { assignId, debounceRaf } from '../../../utils';
 import { ReactComponent as ArrowIcon } from './img/arrow.svg';
