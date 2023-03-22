@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 import { useAuth } from "../../../hooks";
@@ -8,6 +9,7 @@ import { urlAuth } from "../../../api/auth";
 import { URL_API } from "../../../api/const";
 
 export const Auth = ({ token }) => {
+  const [showBtn, setShowBtn] = useState(false);
   const authUrl = `${URL_API}/api/v1/me`;
   const authHeaders = {
     headers: {
@@ -15,11 +17,15 @@ export const Auth = ({ token }) => {
     }
   };
   const [auth] = useAuth(authUrl, authHeaders, token);
+  function handleBtn() {
+    setShowBtn(prevSate => !prevSate);
+  }
 
   return (
     <div className={s.container}>
       {auth.name ? (
-        <button className={s.btn}>
+        <button className={s.btn} onClick={handleBtn}>
+          {showBtn ? <button className={s.logout}>Logout</button> : ""}
           <img
             className={s.img}
             src={auth.img}
