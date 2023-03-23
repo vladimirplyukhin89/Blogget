@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { useAuth } from "../../../hooks";
@@ -8,7 +8,7 @@ import s from "./Auth.module.css";
 import { urlAuth } from "../../../api/auth";
 import { URL_API } from "../../../api/const";
 
-export const Auth = ({ token }) => {
+export const Auth = ({ token, delToken }) => {
   const [showBtn, setShowBtn] = useState(false);
   const authUrl = `${URL_API}/api/v1/me`;
   const authHeaders = {
@@ -16,23 +16,42 @@ export const Auth = ({ token }) => {
       Authorization: `bearer ${token}`
     }
   };
-  const [auth] = useAuth(authUrl, authHeaders, token);
-  function handleBtn() {
+  const [auth, error, clearAuth] = useAuth(authUrl, authHeaders, token);
+  const handleAvatarBtn = () => {
     setShowBtn(prevSate => !prevSate);
-  }
+  };
+
+  const handleLogoutBtn = () => {
+    clearAuth();
+    delToken();
+  };
+
+  useEffect(() => {
+    if (error) {
+      return alert(`Сбой при авторизации: ${error}`);
+    }
+  }, [error]);
 
   return (
     <div className={s.container}>
       {auth.name ? (
-        <button className={s.btn} onClick={handleBtn}>
-          {showBtn ? <button className={s.logout}>Logout</button> : ""}
-          <img
-            className={s.img}
-            src={auth.img}
-            title={auth.name}
-            alt={`Аватар: ${auth.name}`}
-          />
-        </button>
+        <>
+          <button className={s.btn} onClick={handleAvatarBtn}>
+            <img
+              className={s.img}
+              src={auth.img}
+              title={auth.name}
+              alt={`Аватар: ${auth.name}`}
+            />
+          </button>
+          {showBtn ? (
+            <button className={s.logout} onClick={handleLogoutBtn}>
+              Logout
+            </button>
+          ) : (
+            ""
+          )}
+        </>
       ) : (
         <Text className={s.authLink} As="a" href={urlAuth}>
           <IconSVG Icon={LoginIcon} className={s.svg} />
@@ -43,5 +62,6 @@ export const Auth = ({ token }) => {
 };
 
 Auth.propTypes = {
-  token: PropTypes.string
+  token: PropTypes.string,
+  delToken: PropTypes.func
 };

@@ -7,7 +7,7 @@ import Search from "./Search";
 import Auth from "./Auth";
 import Heading from "./Heading";
 
-export const Header = ({ token }) => {
+export const Header = ({ token, delToken }) => {
   return (
     <header className={s.header}>
       <Layout>
@@ -15,7 +15,7 @@ export const Header = ({ token }) => {
           <Logo />
           <Heading text="Главная" />
           <Search />
-          <Auth token={token} />
+          <Auth token={token} delToken={delToken} />
         </div>
       </Layout>
     </header>
@@ -23,5 +23,6 @@ export const Header = ({ token }) => {
 };
 
 Header.propTypes = {
-  token: PropTypes.string
+  token: PropTypes.string,
+  delToken: PropTypes.func
 };
