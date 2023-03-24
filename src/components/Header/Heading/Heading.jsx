@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import { Text } from '../../../UI/Text';
-import s from './Heading.module.css';
+import { Text } from "../../../UI/Text";
+import s from "./Heading.module.css";
 
 export const Heading = ({ text }) => {
   return (
@@ -12,5 +12,5 @@ export const Heading = ({ text }) => {
 };
 
 Heading.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.string
 };

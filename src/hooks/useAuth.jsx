@@ -1,17 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
-export const useAuth = (url = "", headers = {}, token = "") => {
+import { URL_API } from "../api/const";
+import { tokenContext } from "../context";
+
+export const useAuth = () => {
+  const { token, delToken } = useContext(tokenContext);
   const [auth, setAuth] = useState({});
-  const [error, setError] = useState("");
+  const [authError, setAuthError] = useState("");
 
-  function clearAuth() {
-    setAuth({});
-  }
+  const authUrl = `${URL_API}/api/v1/me`;
+  const authHeaders = {
+    headers: {
+      Authorization: `bearer ${token}`
+    }
+  };
 
   useEffect(() => {
     if (!token) return;
 
-    fetch(url, headers)
+    fetch(authUrl, authHeaders)
       .then(res => {
         if (res.status > 200) {
           throw new Error(res.status);
@@ -27,10 +34,13 @@ export const useAuth = (url = "", headers = {}, token = "") => {
       .catch(err => {
         console.log(err);
         const error = err;
-        setError(error);
+        setAuthError(error);
         setAuth({});
+        delToken();
       });
   }, [token]);
 
-  return [auth, error, clearAuth];
+  const clearAuth = () => setAuth({});
+
+  return [auth, authError, clearAuth];
 };

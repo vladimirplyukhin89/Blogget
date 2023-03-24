@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 
-import { useAuth } from "../../../hooks";
 import { Text, IconSVG } from "../../../UI";
 import { ReactComponent as LoginIcon } from "./img/login.svg";
 import s from "./Auth.module.css";
 import { urlAuth } from "../../../api/auth";
-import { URL_API } from "../../../api/const";
+import { tokenContext, authContext } from "../../../context";
 
-export const Auth = ({ token, delToken }) => {
-  const [showBtn, setShowBtn] = useState(false);
-  const authUrl = `${URL_API}/api/v1/me`;
-  const authHeaders = {
-    headers: {
-      Authorization: `bearer ${token}`
-    }
-  };
-  const [auth, error, clearAuth] = useAuth(authUrl, authHeaders, token);
+export const Auth = () => {
+  const { delToken } = useContext(tokenContext);
+  const { auth, authError, clearAuth } = useContext(authContext);
+  const [showLogout, setShowLogout] = useState(false);
+
   const handleAvatarBtn = () => {
-    setShowBtn(prevSate => !prevSate);
+    setShowLogout(prevSate => !prevSate);
   };
 
   const handleLogoutBtn = () => {
@@ -27,10 +22,10 @@ export const Auth = ({ token, delToken }) => {
   };
 
   useEffect(() => {
-    if (error) {
-      return alert(`Сбой при авторизации: ${error}`);
+    if (authError) {
+      return alert(`Сбой при авторизации: ${authError}`);
     }
-  }, [error]);
+  }, [authError]);
 
   return (
     <div className={s.container}>
@@ -44,7 +39,7 @@ export const Auth = ({ token, delToken }) => {
               alt={`Аватар: ${auth.name}`}
             />
           </button>
-          {showBtn ? (
+          {showLogout ? (
             <button className={s.logout} onClick={handleLogoutBtn}>
               Logout
             </button>

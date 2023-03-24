@@ -20,11 +20,11 @@ export const useToken = state => {
     if (token) {
       localStorage.setItem("bearer", token);
     }
-  }, []);
+  }, [token]);
 
   const delToken = () => {
-    localStorage.removeItem("bearer");
-    setToken(undefined);
+    localStorage.clear();
+    setToken("");
   };
 
   return [token, delToken];

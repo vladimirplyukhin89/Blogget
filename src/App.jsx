@@ -1,14 +1,14 @@
 import Header from "./components/Header";
 import Main from "./components/Main";
-import { useToken } from "./hooks/useToken";
+import { TokenContextProvider, AuthContextProvider } from "./context";
 
 export default function App() {
-  const [token, delToken] = useToken("");
-
   return (
-    <>
-      <Header token={token} delToken={delToken}></Header>
-      <Main></Main>
-    </>
+    <TokenContextProvider>
+      <AuthContextProvider>
+        <Header></Header>
+        <Main></Main>
+      </AuthContextProvider>
+    </TokenContextProvider>
   );
 }
