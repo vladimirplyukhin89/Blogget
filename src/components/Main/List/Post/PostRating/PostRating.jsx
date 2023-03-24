@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import { Text } from '../../../../../UI/Text';
-import s from './PostRating.module.css';
+import { Text } from "../../../../../UI/Text";
+import s from "./PostRating.module.css";
 
 export const PostRating = ({ ups }) => {
   return (
@@ -16,5 +16,5 @@ export const PostRating = ({ ups }) => {
 };
 
 PostRating.propsTypes = {
-  ups: PropTypes.number,
+  ups: PropTypes.number
 };

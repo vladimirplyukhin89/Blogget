@@ -8,9 +8,9 @@ import { urlAuth } from "../../../api/auth";
 import { tokenContext, authContext } from "../../../context";
 
 export const Auth = () => {
+  const [showLogout, setShowLogout] = useState(false);
   const { delToken } = useContext(tokenContext);
   const { auth, authError, clearAuth } = useContext(authContext);
-  const [showLogout, setShowLogout] = useState(false);
 
   const handleAvatarBtn = () => {
     setShowLogout(prevSate => !prevSate);
@@ -57,6 +57,5 @@ export const Auth = () => {
 };
 
 Auth.propTypes = {
-  token: PropTypes.string,
   delToken: PropTypes.func
 };

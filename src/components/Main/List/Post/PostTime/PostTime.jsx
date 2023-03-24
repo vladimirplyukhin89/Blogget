@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import { formatDate } from '../../../../../utils';
-import s from './PostTime.module.css';
+import { formatDate } from "../../../../../utils";
+import s from "./PostTime.module.css";
 
 export const PostTime = ({ date }) => {
   return (
@@ -12,5 +12,5 @@ export const PostTime = ({ date }) => {
 };
 
 PostTime.propsTypes = {
-  date: PropTypes.string,
+  date: PropTypes.string
 };

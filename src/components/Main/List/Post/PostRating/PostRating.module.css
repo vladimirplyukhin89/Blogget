@@ -24,11 +24,11 @@
   background-color: #ff9966;
 }
 .up {
-  background-image: url('../../Post/img/up.svg');
+  background-image: url("../img/up.svg");
 }
 
 .down {
-  background-image: url('../../Post/img/down.svg');
+  background-image: url("../img/down.svg");
 }
 
 @media (min-width: 580px) {
@@ -43,7 +43,8 @@
   .down {
     width: 24px;
     height: 24px;
-    transition: outline-color 0.36s ease-in-out, background-color 0.36s ease-in-out;
+    transition: outline-color 0.36s ease-in-out,
+      background-color 0.36s ease-in-out;
     outline: 1px solid transparent;
     border-radius: 50%;
     outline-offset: 3px;

@@ -20,7 +20,7 @@ export const useAuth = () => {
 
     fetch(authUrl, authHeaders)
       .then(res => {
-        if (res.status > 200) {
+        if (res.status === 401) {
           throw new Error(res.status);
         }
         return res.json();

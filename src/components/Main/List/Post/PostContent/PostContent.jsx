@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import { Text } from '../../../../../UI/Text';
-import s from './PostContent.module.css';
+import { Text } from "../../../../../UI/Text";
+import s from "./PostContent.module.css";
 
 export const PostContent = ({ author, title }) => {
   return (
@@ -11,7 +11,15 @@ export const PostContent = ({ author, title }) => {
           {title}
         </Text>
       </Text>
-      <Text As="a" color="green" size={12} tsize={14} className={s.linkAuthor} fw={400} href="#author">
+      <Text
+        As="a"
+        color="green"
+        size={12}
+        tsize={14}
+        className={s.linkAuthor}
+        fw={400}
+        href="#author"
+      >
         {author}
       </Text>
     </div>
@@ -20,5 +28,5 @@ export const PostContent = ({ author, title }) => {
 
 PostContent.propsTypes = {
   author: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.string
 };
