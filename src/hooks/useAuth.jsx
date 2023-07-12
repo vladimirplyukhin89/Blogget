@@ -1,14 +1,17 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
+import { getToken } from "./token";
+import { deleteToken } from "../store/actions";
 import { URL_API } from "../api/const";
-import { tokenContext } from "../context";
 
 export const useAuth = () => {
-  const { token, delToken } = useContext(tokenContext);
+  const dispatch = useDispatch();
   const [auth, setAuth] = useState({});
   const [authError, setAuthError] = useState("");
 
   const authUrl = `${URL_API}/api/v1/me`;
+  const token = getToken();
   const authHeaders = {
     headers: {
       Authorization: `bearer ${token}`
@@ -36,7 +39,7 @@ export const useAuth = () => {
         const error = err;
         setAuthError(error);
         setAuth({});
-        delToken();
+        dispatch(deleteToken());
       });
   }, [token]);
 

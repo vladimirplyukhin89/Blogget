@@ -1,3 +1,3 @@
-export * from "./useToken";
+export * from "./token";
 export * from "./useAuth";
 export * from "./usePosts";

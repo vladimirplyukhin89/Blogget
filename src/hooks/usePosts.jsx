@@ -1,13 +1,12 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 
 import { URL_API } from "../api/const";
-import { tokenContext } from "../context";
+import { getToken } from "./token";
 
 export const usePosts = () => {
   const [bestPosts, setBestPosts] = useState([]);
   const [bestPostsError, setBestPostsError] = useState("");
-
-  const { token } = useContext(tokenContext);
+  const token = getToken();
 
   const bestPostUrl = `${URL_API}/best`;
   const bestPostHeaders = {

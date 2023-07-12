@@ -1,2 +1,2 @@
-export { Text } from './Text';
-export { IconSVG } from './IconSVG';
+export { Text } from "./Text";
+export { IconSVG } from "./IconSVG";

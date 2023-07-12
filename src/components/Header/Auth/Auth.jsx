@@ -5,12 +5,14 @@ import { Text, IconSVG } from "../../../UI";
 import { ReactComponent as LoginIcon } from "./img/login.svg";
 import s from "./Auth.module.css";
 import { urlAuth } from "../../../api/auth";
-import { tokenContext, authContext } from "../../../context";
+import { authContext } from "../../../context";
+import { useDispatch } from "react-redux";
+import { deleteToken } from "../../../store/actions/index";
 
 export const Auth = () => {
   const [showLogout, setShowLogout] = useState(false);
-  const { delToken } = useContext(tokenContext);
   const { auth, authError, clearAuth } = useContext(authContext);
+  const dispatch = useDispatch();
 
   const handleAvatarBtn = () => {
     setShowLogout(prevSate => !prevSate);
@@ -18,7 +20,7 @@ export const Auth = () => {
 
   const handleLogoutBtn = () => {
     clearAuth();
-    delToken();
+    dispatch(deleteToken);
   };
 
   useEffect(() => {

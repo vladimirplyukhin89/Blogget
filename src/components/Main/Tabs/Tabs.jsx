@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-import { IconSVG } from '../../../UI';
-import s from './Tabs.module.css';
-import { assignId, debounceRaf } from '../../../utils';
-import { ReactComponent as ArrowIcon } from './img/arrow.svg';
-import { ReactComponent as HomeIcon } from './img/home.svg';
-import { ReactComponent as BestIcon } from './img/best.svg';
-import { ReactComponent as HotIcon } from './img/hot.svg';
-import { ReactComponent as TopIcon } from './img/top.svg';
+import { IconSVG } from "../../../UI";
+import s from "./Tabs.module.css";
+import { assignId, debounceRaf } from "../../../utils";
+import { ReactComponent as ArrowIcon } from "./img/arrow.svg";
+import { ReactComponent as HomeIcon } from "./img/home.svg";
+import { ReactComponent as BestIcon } from "./img/best.svg";
+import { ReactComponent as HotIcon } from "./img/hot.svg";
+import { ReactComponent as TopIcon } from "./img/top.svg";
 
 const LIST = [
-  { title: 'Главная', Icon: HomeIcon },
-  { title: 'Топ', Icon: TopIcon },
-  { title: 'Лучшие', Icon: BestIcon },
-  { title: 'Горячие', Icon: HotIcon },
+  { title: "Главная", Icon: HomeIcon },
+  { title: "Топ", Icon: TopIcon },
+  { title: "Лучшие", Icon: BestIcon },
+  { title: "Горячие", Icon: HotIcon }
 ].map(assignId);
 
 export const Tabs = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdown, setIsDropdown] = useState(true);
-  const [title, setTitle] = useState('Главная');
+  const [title, setTitle] = useState("Главная");
 
   const handleResize = () => {
     if (document.documentElement.clientWidth < 768) {
@@ -33,10 +33,10 @@ export const Tabs = () => {
   useEffect(() => {
     const debounceResize = debounceRaf(handleResize);
     debounceResize();
-    window.addEventListener('resize', debounceResize);
+    window.addEventListener("resize", debounceResize);
 
     return () => {
-      window.removeEventListener('resize', debounceResize);
+      window.removeEventListener("resize", debounceResize);
     };
   }, []);
 
@@ -74,5 +74,5 @@ export const Tabs = () => {
 
 Tabs.propTypes = {
   list: PropTypes.array,
-  setList: PropTypes.func,
+  setList: PropTypes.func
 };
